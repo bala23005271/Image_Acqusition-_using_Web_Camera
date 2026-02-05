@@ -1,5 +1,5 @@
 # Image_Acqusition-_using_Web_Camera
-## Name: BALA MURUGAN S
+## Name:BALA MURUGAN S
 ## Register no:212223230027
 
 ## Aim:
@@ -33,98 +33,131 @@ End Program with 'q'. Allow the program to be terminated by pressing the 'q' key
 
 
 ## Program:
-### Developed By: BALA MURUGAN G
-### Register No: 212223230027
+### Developed By: BALA MURUGAN S
+### Register No:212223230027
+
 
 ## i) Write the frame as JPG file
 
-```
+```PYTHON
 import cv2
-cap=cv2.VideoCapture(0)
-frame_number=0
-
-while frame_number<5:
-    ret,frame=cap.read()
-    cv2.imshow('frame',frame)
-    cv2.imwrite(f"frame_(frame_number).jpg",frame)
-    frame_number+=1
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+import matplotlib.pyplot as plt
+from IPython.display import clear_output
+import time
+cap = cv2.VideoCapture(0)
+ret, frame = cap.read()
+if ret:
+    cv2.imwrite("captured_frame.jpg", frame)
 cap.release()
-cv2.destroyAllWindows()
+captured_image = cv2.imread('captured_frame.jpg')
+plt.imshow(captured_image[:,:,::-1])
+plt.title('Captured Frame')
+plt.axis('off')
+plt.show()
 
 ```
 
 
 ## ii) Display the video
 
-```
-videoCaptureObject = cv2.VideoCapture(0)
-while True:
-    ret, frame = videoCaptureObject.read()
-    cv2.imshow('myimage', frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+```PYTHON
+cap = cv2.VideoCapture(0)
+
+for i in range(50):
+    ret, frame = cap.read()
+    if not ret:
         break
-videoCaptureObject.release()
-cv2.destroyAllWindows()  
+    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+    time.sleep(0.05)
+
+cap.release()
 ```
 
 
 ## iii) Display the video by resizing the window
 
-```
+```PYTHON
 
-import cv2
-cap=cv2.VideoCapture(0)
-cv2.namedWindow('Video',cv2.WINDOW_NORMAL)
-while True:
-    ret,frame=cap.read()
-    cv2.imshow('Video',frame)
-    cv2.resizeWindow('Video',100,200)
-    if cv2.waitKey(1) & 0xFF ==ord('q'):
+cap = cv2.VideoCapture(0)
+
+for i in range(50):
+    ret, frame = cap.read()
+    if not ret:
         break
+    resized_frame = cv2.resize(frame, (100, 150))  # Resize to 320x240
+    frame_rgb = cv2.cvtColor(resized_frame, cv2.COLOR_BGR2RGB)
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+    time.sleep(0.05)
+
 cap.release()
-cv2.destroyAllWindows()        
+  
 
 ```
 
 
 ## iv) Rotate and display the video
 
-```
+```PYTHON
+cap = cv2.VideoCapture(0)
 
-cap=cv2.VideoCapture(0)
-rotation_angel=90
-
-while True:
-    ret,frame=cap.read()
-    rotated_frame=cv2.rotate(frame,cv2.ROTATE_90_CLOCKWISE)
-    cv2.imshow('Rotated Video',rotated_frame)
-    if cv2.waitKey(1)&0xFF==ord('q'):
+for i in range(50):
+    ret, frame = cap.read()
+    if not ret:
         break
-cap.release()
-cv2.destroyAllWindows()  
+    rotated_frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+    frame_rgb = cv2.cvtColor(rotated_frame, cv2.COLOR_BGR2RGB)
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+    time.sleep(0.05)
+
+cap.release() 
 ```
 
 ## Output
 
 ### i) Write the frame as JPG image
+</br>
+<img width="501" height="407" alt="image" src="https://github.com/user-attachments/assets/d2d0443f-1590-4f6c-ae91-3803d74f67d7" />
 
-![image](https://github.com/user-attachments/assets/4ed7be48-1799-4bef-b31d-6984c495e723)
+
+</br>
+
 
 ### ii) Display the video
+</br>
+<img width="517" height="399" alt="image" src="https://github.com/user-attachments/assets/0f47728c-1a2b-414d-a2b2-bfd1bb34e5e1" />
 
-![Screenshot 2024-10-20 222524](https://github.com/user-attachments/assets/a14b8d8e-2a72-44fc-a95d-e4fdb6e581a3)
+
+</br>
+
 
 ### iii) Display the video by resizing the window
+</br>
+<img width="307" height="391" alt="image" src="https://github.com/user-attachments/assets/62b954bd-1ce7-455d-891d-9ed942ca1acd" />
 
-![image](https://github.com/user-attachments/assets/64d10f12-5af6-4247-b11a-887a6615e808)
+
+</br>
 
 
 
 ### iv) Rotate and display the video
+</br>
+<img width="297" height="392" alt="image" src="https://github.com/user-attachments/assets/710eeaad-25bf-4c27-b723-e90d9149351c" />
 
-![image](https://github.com/user-attachments/assets/63b308f0-8e16-4447-9ecf-cb7174833b4c)
+
+</br>
+
+
+
 
 
 ## Result:
